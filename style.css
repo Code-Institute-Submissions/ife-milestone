@@ -18,10 +18,10 @@
     display: none;
 }
 
-.clicked {
+.flipped {
     background: rgb(255, 104, 174);
 }
 
-.clicked > p {
+.flipped > p {
     display: block;
 }
