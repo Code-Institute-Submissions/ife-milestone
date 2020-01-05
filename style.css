@@ -1,0 +1,27 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 200px;
+    width: 175px;
+    background: blue;
+    margin: 20px;
+
+}
+
+.card > p {
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    display: none;
+}
+
+.clicked {
+    background: rgb(255, 104, 174);
+}
+
+.clicked > p {
+    display: block;
+}
