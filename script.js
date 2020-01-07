@@ -21,32 +21,33 @@ shuffleDeck();
 function chooseCards() {
     $(".card").click(function() {
         $(this).addClass("flipped");
+        checkMatch();
     });
 };
 
 chooseCards();
 
 function checkMatch() {
-    if(flippedCards.length === 2){
-        if(flippedCards[0].data-card-number === flippedCards[1].data-card-number){
-            match();
+    if ($(".flipped").length === 2 ) {
+        if($(".flipped").first().data("cardNumber") == $(".flipped").last().data("cardNumber")) {
+            cardMatch();
+            //$('.flipped').each(function() {
+                //$(this).removeClass('flipped');
+              //});
         } else {
-            unmatch();
-        }
-    }
+            cardUnmatch();
+            //setTimeout(function() {
+              //  $('.flipped').each(function() {
+                //    $(this).removeClass('flipped')
+                //})}, 1000);
+            
+
+        };
+    };
 };
 
-function match() {
-    flippedCards[0].addClass("matched").removeClass("flipped");
-    flippedCards[1].addClass("matched").removeClass("flipped");
-    flippedCards = [];
-}
 
-function unmatch() {
-    flippedCards[0].removeClass("flipped");
-    flippedCards[1].removeClass("flipped");
-    flippedCards = [];
-}
+
 
 
 
