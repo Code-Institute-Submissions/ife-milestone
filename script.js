@@ -29,31 +29,45 @@ chooseCards();
 
 function checkMatch() {
     if ($(".flipped").length === 2 ) {
+
         if($(".flipped").first().data("cardNumber") == $(".flipped").last().data("cardNumber")) {
             cardMatch();
             
         } else {
             cardUnmatch();
             
-            
-
         };
+
     };
 };
 
 function cardMatch() {
-    $('.flipped').each(function() {
-                $(this).removeClass('flipped').addClass('matched');
-              });
+    disableClicks();
+    setTimeout(function() {
+        $('.flipped').each(function() {
+          $(this).removeClass('flipped').addClass('matched')
+        })
+    enableClicks() 
+}, 1000);
 }
 
 function cardUnmatch() {
+    disableClicks();
     setTimeout(function() {
                 $('.flipped').each(function() {
                   $(this).removeClass('flipped')
-                })}, 1000);
+                })
+            enableClicks();
+        }, 1000);
 }
 
+function disableClicks() {
+    $(".card").addClass("no-click");
+}
+
+function enableClicks() {
+    $(".card").removeClass("no-click");
+}
 
 
 
