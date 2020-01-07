@@ -31,22 +31,28 @@ function checkMatch() {
     if ($(".flipped").length === 2 ) {
         if($(".flipped").first().data("cardNumber") == $(".flipped").last().data("cardNumber")) {
             cardMatch();
-            //$('.flipped').each(function() {
-                //$(this).removeClass('flipped');
-              //});
+            
         } else {
             cardUnmatch();
-            //setTimeout(function() {
-              //  $('.flipped').each(function() {
-                //    $(this).removeClass('flipped')
-                //})}, 1000);
+            
             
 
         };
     };
 };
 
+function cardMatch() {
+    $('.flipped').each(function() {
+                $(this).removeClass('flipped').addClass('matched');
+              });
+}
 
+function cardUnmatch() {
+    setTimeout(function() {
+                $('.flipped').each(function() {
+                  $(this).removeClass('flipped')
+                })}, 1000);
+}
 
 
 

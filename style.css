@@ -25,3 +25,7 @@
 .flipped > p {
     display: block;
 }
+
+.matched {
+    background-color: lightgreen;
+}
