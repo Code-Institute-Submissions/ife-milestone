@@ -5,7 +5,7 @@
     margin-right: 250px;
 }
 
-.card {
+.game-card {
     height: 160px;
     margin: 10px;
     border-radius: 20px;
@@ -14,7 +14,7 @@
     flex: 1 0 20%;
 }
 
-.card > img {
+.game-card > img {
     display: none;
     margin-top: 2.5%;
     margin-left: auto;
@@ -38,6 +38,7 @@
 
 .matched {
     background-color: lightgreen;
+    pointer-events: none;
 }
 
 .hard {
@@ -45,6 +46,6 @@
     margin-right: 100px;
 }
 
-.hard > .card {
+.hard > .game-card {
     flex: 1 0 14%;
 }

@@ -1,22 +1,27 @@
 $(document).ready(function() {
-
-let card = document.getElementsByClassName('card');
+ 
+let card = document.getElementsByClassName('game-card');
 
 let deck = [];
-$('.card').each(function() {
+$('.game-card').each(function() {
     let id = $(this).attr('id');
     deck.push(id);
 });
+
 
 easy();
 medium();
 hard();
 
+startGame();
+
 function startGame() {
-    $('div').removeClass('flipped matched');
-    shuffleDeck();
-    chooseCards();
-    checkMatch();
+    $('#start').click(function() {
+        $('div').removeClass('flipped matched no-click');
+        shuffleDeck();
+        chooseCards();
+        checkMatch();
+    });
 };
 
 function shuffleDeck() {
@@ -27,30 +32,31 @@ function shuffleDeck() {
     }
 };
 
-shuffleDeck();
-
 function chooseCards() {
-    $(".card").click(function() {
+    $(".game-card").click(function() {
         $(this).addClass("flipped");
         checkMatch();
     });
 };
-
-chooseCards();
 
 function checkMatch() {
     if ($(".flipped").length === 2 ) {
 
         if($(".flipped").first().data("cardNumber") == $(".flipped").last().data("cardNumber")) {
             cardMatch();
+    
+               
             
         } else {
             cardUnmatch();
             
         };
-
+        setTimeout(function() {
+            gameComplete()}, 1300);
+        
     };
 };
+
 
 function cardMatch() {
     disableClicks();
@@ -73,47 +79,61 @@ function cardUnmatch() {
 }
 
 function disableClicks() {
-    $(".card").addClass("no-click");
+    $(".game-card").addClass("no-click");
 }
 
 function enableClicks() {
-    $(".card").removeClass("no-click");
+    $(".game-card").removeClass("no-click");
 }
 
 function easy() {
     $("#easy").click(function() {
-        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
-        startGame();
+        disableClicks();
+        $('#game').removeClass('hard');
+        $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
     });
 };
 
 
 function medium() {
     $("#medium").click(function() {
-        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
+        disableClicks();
+        $('#game').removeClass('hard');
+        $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
         var $newdiv;
     for (var i = 0; i < 4; i++) {
         var j = i+9;
         var k = Math.ceil( (j) / 2);
-        $newdiv = $('<div class="card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
+        $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
         $('#game').append($newdiv);
     }
-    startGame(); 
     });
 };
 
 function hard() {
     $("#hard").click(function() {
-        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
+        disableClicks();
+        $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
         var $newdiv;
     for (var i = 0; i < 10; i++) {
         var j = i+9;
         var k = Math.ceil( (j) / 2);
-        $newdiv = $('<div class="card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
+        $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
         $('#game').append($newdiv);
     }
     $('#game').addClass('hard');
-    startGame(); 
     });
-}
+};
+
+
+
+function gameComplete() {
+    let numberOfMatched = $('.matched').length
+    let numberOfCards = $('.game-card').length
+    if (numberOfMatched === numberOfCards) {
+        disableClicks();
+        $('#congratulations').modal('show');
+    };
+};
+
 });
