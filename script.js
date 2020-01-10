@@ -1,6 +1,7 @@
 $(document).ready(function() {
  
 let card = document.getElementsByClassName('game-card');
+let stopwatch = document.getElementsByClassName('timer');
 
 let deck = [];
 $('.game-card').each(function() {
@@ -8,12 +9,13 @@ $('.game-card').each(function() {
     deck.push(id);
 });
 
+let movesTaken = 1;
 
+startGame();
 easy();
 medium();
 hard();
 
-startGame();
 
 function startGame() {
     $('#start').click(function() {
@@ -21,6 +23,10 @@ function startGame() {
         shuffleDeck();
         chooseCards();
         checkMatch();
+        timer();
+        movesTaken = 1;
+        seconds = 0;
+        minutes = 0;
     });
 };
 
@@ -36,6 +42,8 @@ function chooseCards() {
     $(".game-card").click(function() {
         $(this).addClass("flipped");
         checkMatch();
+        $('.move-counter').text(movesTaken);
+        movesTaken++;
     });
 };
 
@@ -128,12 +136,37 @@ function hard() {
 
 
 function gameComplete() {
-    let numberOfMatched = $('.matched').length
-    let numberOfCards = $('.game-card').length
+    let numberOfMatched = $('.matched').length;
+    let numberOfCards = $('.game-card').length;
     if (numberOfMatched === numberOfCards) {
         disableClicks();
         $('#congratulations').modal('show');
     };
+};
+
+var seconds = 0;
+var minutes = 0;
+var timeTaken;
+
+function timer() {
+    timeTaken = setInterval(function() {
+        $('.timer').text(minutes + ':' + seconds);
+        seconds++;
+        if (minutes < 10) {
+            if (seconds < 10) {
+            $('.timer').text('0' + minutes + ':0' + seconds)
+                } else {
+                    $('.timer').text('0' + minutes + ':' + seconds)
+                }
+        } else {
+            $('.timer').text(minutes + ':' + seconds)
+        }
+
+        if (seconds == 59){
+            minutes++;
+            seconds = 0;
+        }
+    }, 1000);
 };
 
 });
