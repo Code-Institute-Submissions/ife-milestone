@@ -82,7 +82,7 @@ function enableClicks() {
 
 function easy() {
     $("#easy").click(function() {
-        $("div").remove("#card13, #card14, #card15, #card16, #card17, #card18, #card19, #card20");
+        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
         startGame();
     });
 };
@@ -90,10 +90,10 @@ function easy() {
 
 function medium() {
     $("#medium").click(function() {
-        $("div").remove("#card13, #card14, #card15, #card16, #card17, #card18, #card19, #card20");
+        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
         var $newdiv;
     for (var i = 0; i < 4; i++) {
-        var j = i+13;
+        var j = i+9;
         var k = Math.ceil( (j) / 2);
         $newdiv = $('<div class="card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
         $('#game').append($newdiv);
@@ -104,14 +104,15 @@ function medium() {
 
 function hard() {
     $("#hard").click(function() {
-        $("div").remove("#card13, #card14, #card15, #card16, #card17, #card18, #card19, #card20");
+        $("div").remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
         var $newdiv;
-    for (var i = 0; i < 8; i++) {
-        var j = i+13;
+    for (var i = 0; i < 10; i++) {
+        var j = i+9;
         var k = Math.ceil( (j) / 2);
         $newdiv = $('<div class="card" data-card-number=' + k + ' id= card'+ (j) + '> <img src="images/'+ k +'.png"></img></div>');
         $('#game').append($newdiv);
     }
+    $('#game').addClass('hard');
     startGame(); 
     });
 }
