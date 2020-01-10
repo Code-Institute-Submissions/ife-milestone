@@ -8,6 +8,8 @@ $('.card').each(function() {
     deck.push(id);
 });
 
+medium();
+
 function shuffleDeck() {
     var parent = $("#game");
     var divs = parent.children();
@@ -48,7 +50,7 @@ function cardMatch() {
           $(this).removeClass('flipped').addClass('matched')
         })
     enableClicks() 
-}, 1000);
+}, 800);
 }
 
 function cardUnmatch() {
@@ -58,7 +60,7 @@ function cardUnmatch() {
                   $(this).removeClass('flipped')
                 })
             enableClicks();
-        }, 1000);
+        }, 800);
 }
 
 function disableClicks() {
@@ -68,6 +70,22 @@ function disableClicks() {
 function enableClicks() {
     $(".card").removeClass("no-click");
 }
+
+function medium() {
+    $("#medium").click(function() {
+        $("div").remove("#card13, #card14, #card15, #card16, #card17, #card18, #card19, #card20");
+        var $newdiv;
+    for (var i = 0; i < 4; i++) {
+        var j = i+13;
+        $newdiv = $('<div class="card" data-card-number=' + Math.ceil( (j) / 2) + ' id= card'+ (j) +'/>');
+        $('#game').append($newdiv);
+    }
+    shuffleDeck();
+    chooseCards();
+    checkMatch();
+});
+        };
+
 
 
 
