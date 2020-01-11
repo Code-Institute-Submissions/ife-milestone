@@ -1,3 +1,19 @@
+h1 {
+    text-align: center;
+    color: #E7A75C;
+    padding-top: 10px;
+}
+
+.game-container {
+    margin: none;
+    padding-left: 20px;
+    background: #70273C;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    
+}
+
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -5,12 +21,21 @@
     margin-right: auto;
 }
 
+#start {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .game-card {
-    height: 160px;
+    height: 180px;
     margin: 10px;
     border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 4px;
     box-shadow: 0 10px 6px -6px black;
-    background: blue;
+    background: #E7A75C;
     flex: 1 0 20%;
 }
 
@@ -29,7 +54,7 @@
 }
 
 .flipped {
-    background: black;
+    background: #E7A75C;
 }
 
 .flipped>img {
@@ -38,7 +63,6 @@
 
 .matched {
     display: block;
-    background: black;
     opacity: 0%;
     pointer-events: none;
 

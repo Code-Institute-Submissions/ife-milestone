@@ -3,11 +3,8 @@ $(document).ready(function () {
     let card = document.getElementsByClassName('game-card');
     let stopwatch = document.getElementsByClassName('timer');
 
-    let deck = [];
-    $('.game-card').each(function () {
-        let id = $(this).attr('id');
-        deck.push(id);
-    });
+    $('#congratulations').modal('show');
+
 
     let movesTaken = 0;
     var seconds = 0;
@@ -19,6 +16,7 @@ $(document).ready(function () {
     hard();
     startGame();
     moveCounter();
+    disableClicks();
 
     function startGame() {
         $('#start').click(function () {
@@ -109,6 +107,7 @@ $(document).ready(function () {
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
             $('.timer').text('00:00');
+            $('.move-counter').text(0);
         });
     };
 
@@ -128,6 +127,7 @@ $(document).ready(function () {
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
             $('.timer').text('00:00');
+            $('.move-counter').text(0);
         });
     };
 
@@ -146,6 +146,7 @@ $(document).ready(function () {
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
             $('.timer').text('00:00');
+            $('.move-counter').text(0);
         });
     };
 
@@ -173,6 +174,7 @@ $(document).ready(function () {
             $('.move-counter').text(movesTaken);
         });
     };
+
 
     function timer() {
         timeTaken = setInterval(function () {
