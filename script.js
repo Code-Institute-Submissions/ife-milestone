@@ -31,6 +31,7 @@ $(document).ready(function () {
             chooseCards();
             checkMatch();
             clearInterval(timeTaken);
+            $('.timer').text('00:00');
             timer();
         });
     };
@@ -73,12 +74,13 @@ $(document).ready(function () {
 
     function cardMatch() {
         disableClicks();
+        $('.flipped').addClass('animated bounceOut');
         setTimeout(function () {
             $('.flipped').each(function () {
-                $(this).removeClass('flipped').addClass('matched')
+                $(this).addClass('matched').removeClass('animated bounceOut flipped');
             })
             enableClicks()
-        }, 800);
+        }, 1100);
     }
 
     function cardUnmatch() {
@@ -88,7 +90,7 @@ $(document).ready(function () {
                 $(this).removeClass('flipped')
             })
             enableClicks();
-        }, 800);
+        }, 1100);
     }
 
     function disableClicks() {
@@ -104,6 +106,9 @@ $(document).ready(function () {
             disableClicks();
             $('#game').removeClass('hard');
             $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
+            clearInterval(timeTaken);
+            clearTimeout(timeTaken);
+            $('.timer').text('00:00');
         });
     };
 
@@ -120,6 +125,9 @@ $(document).ready(function () {
                 $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="images/' + k + '.png"></img></div>');
                 $('#game').append($newdiv);
             }
+            clearInterval(timeTaken);
+            clearTimeout(timeTaken);
+            $('.timer').text('00:00');
         });
     };
 
@@ -135,6 +143,9 @@ $(document).ready(function () {
                 $('#game').append($newdiv);
             }
             $('#game').addClass('hard');
+            clearInterval(timeTaken);
+            clearTimeout(timeTaken);
+            $('.timer').text('00:00');
         });
     };
 
@@ -150,6 +161,7 @@ $(document).ready(function () {
             $('.total-minutes').text(finalMinutes);
             $('.total-seconds').text(finalSeconds);
             $('.total-moves').text(finalMoves);
+            clearTimeout(timeTaken);
         };
     };
 
@@ -175,9 +187,9 @@ $(document).ready(function () {
                 }
             } else {
                 if (seconds < 10) {
-                    $('.timer').text( + minutes + ':0' + seconds)
+                    $('.timer').text(+minutes + ':0' + seconds)
                 } else {
-                    $('.timer').text( + minutes + ':' + seconds)
+                    $('.timer').text(+minutes + ':' + seconds)
                 }
             }
 

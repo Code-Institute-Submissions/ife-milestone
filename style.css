@@ -14,7 +14,7 @@
     flex: 1 0 20%;
 }
 
-.game-card > img {
+.game-card>img {
     display: none;
     margin-top: 2.5%;
     margin-left: auto;
@@ -32,16 +32,22 @@
     background: black;
 }
 
-.flipped > img {
+.flipped>img {
     display: block;
 }
 
 .matched {
-    background-color: lightgreen;
+    display: block;
+    background: black;
+    opacity: 0%;
     pointer-events: none;
+
+    -webkit-transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
 }
 
-.hard > .game-card {
+.hard>.game-card {
     flex: 1 0 14%;
 }
 
