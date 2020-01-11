@@ -44,3 +44,7 @@
 .hard > .game-card {
     flex: 1 0 14%;
 }
+
+p {
+    display: inline-block;
+}

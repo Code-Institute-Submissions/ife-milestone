@@ -122,7 +122,6 @@ $(document).ready(function () {
             }
         });
     };
-    
 
     function hard() {
         $("#hard").click(function () {
@@ -139,13 +138,18 @@ $(document).ready(function () {
         });
     };
 
-
-
     function gameComplete() {
         let numberOfMatched = $('.matched').length;
         let numberOfCards = $('.game-card').length;
         if (numberOfMatched === numberOfCards) {
             disableClicks();
+            $('#congratulations').modal('show');
+            var finalMinutes = minutes;
+            var finalSeconds = seconds;
+            var finalMoves = movesTaken;
+            $('.total-minutes').text(finalMinutes);
+            $('.total-seconds').text(finalSeconds);
+            $('.total-moves').text(finalMoves);
         };
     };
 
@@ -170,7 +174,11 @@ $(document).ready(function () {
                     $('.timer').text('0' + minutes + ':' + seconds)
                 }
             } else {
-                $('.timer').text(minutes + ':' + seconds)
+                if (seconds < 10) {
+                    $('.timer').text( + minutes + ':0' + seconds)
+                } else {
+                    $('.timer').text( + minutes + ':' + seconds)
+                }
             }
 
             if (seconds == 59) {
