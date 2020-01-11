@@ -3,13 +3,11 @@ $(document).ready(function () {
     let card = document.getElementsByClassName('game-card');
     let stopwatch = document.getElementsByClassName('timer');
 
-    $('#congratulations').modal('show');
-
-
-    let movesTaken = 0;
+    var movesTaken = 0;
     var seconds = 0;
     var minutes = 0;
-
+    const unmatchSound = document.getElementById('wrong');
+    const matchSound = document.getElementById('correct');
 
     easy();
     medium();
@@ -29,7 +27,7 @@ $(document).ready(function () {
             chooseCards();
             checkMatch();
             clearInterval(timeTaken);
-            $('.timer').text('00:00');
+            $('.timer').text('Timer: 00:00');
             timer();
         });
     };
@@ -72,6 +70,7 @@ $(document).ready(function () {
 
     function cardMatch() {
         disableClicks();
+        matchSound.play();
         $('.flipped').addClass('animated bounceOut');
         setTimeout(function () {
             $('.flipped').each(function () {
@@ -83,6 +82,7 @@ $(document).ready(function () {
 
     function cardUnmatch() {
         disableClicks();
+        unmatchSound.play();
         setTimeout(function () {
             $('.flipped').each(function () {
                 $(this).removeClass('flipped')
@@ -106,8 +106,8 @@ $(document).ready(function () {
             $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
-            $('.timer').text('00:00');
-            $('.move-counter').text(0);
+            $('.timer').text('Timer: 00:00');
+            $('.move-counter').text('Moves:' + 0);
         });
     };
 
@@ -121,13 +121,13 @@ $(document).ready(function () {
             for (var i = 0; i < 4; i++) {
                 var j = i + 9;
                 var k = Math.ceil((j) / 2);
-                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="images/' + k + '.png"></img></div>');
+                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="assets/images/' + k + '.png"></img></div>');
                 $('#game').append($newdiv);
             }
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
-            $('.timer').text('00:00');
-            $('.move-counter').text(0);
+            $('.timer').text('Timer: 00:00');
+            $('.move-counter').text('Moves:' + 0);
         });
     };
 
@@ -139,14 +139,14 @@ $(document).ready(function () {
             for (var i = 0; i < 10; i++) {
                 var j = i + 9;
                 var k = Math.ceil((j) / 2);
-                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="images/' + k + '.png"></img></div>');
+                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="assets/images/' + k + '.png"></img></div>');
                 $('#game').append($newdiv);
             }
             $('#game').addClass('hard');
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
-            $('.timer').text('00:00');
-            $('.move-counter').text(0);
+            $('.timer').text('Timer: 00:00');
+            $('.move-counter').text('Moves:' + 0);
         });
     };
 
@@ -171,7 +171,7 @@ $(document).ready(function () {
     function moveCounter() {
         $('.game-card').click(function () {
             movesTaken++;
-            $('.move-counter').text(movesTaken);
+            $('.move-counter').text('Moves:' + movesTaken);
         });
     };
 
@@ -183,15 +183,15 @@ $(document).ready(function () {
             seconds++;
             if (minutes < 10) {
                 if (seconds < 10) {
-                    $('.timer').text('0' + minutes + ':0' + seconds)
+                    $('.timer').text('Timer: 0' + minutes + ':0' + seconds)
                 } else {
-                    $('.timer').text('0' + minutes + ':' + seconds)
+                    $('.timer').text('Timer: 0' + minutes + ':' + seconds)
                 }
             } else {
                 if (seconds < 10) {
-                    $('.timer').text(+minutes + ':0' + seconds)
+                    $('.timer').text('Timer:' + minutes + ':0' + seconds)
                 } else {
-                    $('.timer').text(+minutes + ':' + seconds)
+                    $('.timer').text('Timer:' + minutes + ':' + seconds)
                 }
             }
 

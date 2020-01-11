@@ -16,6 +16,15 @@
 </head>
 
 <body>
+  <audio id="wrong">
+    <source src="assets/sounds/Wrong-answer-sound-effect.mp3">
+  </audio>
+  <audio id="correct">
+    <source src="assets/sounds/TaDa-SoundBible.com-1884170640.mp3">
+  </audio>
+  <audio id="card-flip">
+    <source src="assets/sounds/cardSlide7.wav">
+  </audio>
   <div class="game-container">
   <h1>Match 2 Memory Game</h1>
   <h3>How to play:</h3>
@@ -24,7 +33,7 @@
     Continue until you find matching cards. Game complete when you find all of the matches.
   </p>
 
-  <button id="start">Start</button>
+  <button id="start">START</button>
 
   <div class="row">
     <div class="col-2">
@@ -35,28 +44,28 @@
     <div class="col-8">
       <div id="game" class="flex-container">
         <div class="game-card" data-card-number="1" id="card1">
-          <img src="images/1.png"></img>
+          <img src="assets/images/1.png"></img>
         </div>
         <div class="game-card" data-card-number="1" id="card2">
-          <img src="images/1.png"></img>
+          <img src="assets/images/1.png"></img>
         </div>
         <div class="game-card" data-card-number="2" id="card3">
-          <img src="images/2.png"></img>
+          <img src="assets/images/2.png"></img>
         </div>
         <div class="game-card" data-card-number="2" id="card4">
-          <img src="images/2.png"></img>
+          <img src="assets/images/2.png"></img>
         </div>
         <div class="game-card" data-card-number="3" id="card5">
-          <img src="images/3.png"></img>
+          <img src="assets/images/3.png"></img>
         </div>
         <div class="game-card" data-card-number="3" id="card6">
-          <img src="images/3.png"></img>
+          <img src="assets/images/3.png"></img>
         </div>
         <div class="game-card" data-card-number="4" id="card7">
-          <img src="images/4.png"></img>
+          <img src="assets/images/4.png"></img>
         </div>
         <div class="game-card" data-card-number="4" id="card8">
-          <img src="images/4.png"></img>
+          <img src="assets/images/4.png"></img>
         </div>
       </div>
     </div>
@@ -67,7 +76,9 @@
       <button id="hard">Hard</button>
     </div>
   </div>
-  <div class="modal fade" id="congratulations" tabindex="-1" role="dialog" aria-labelledby="congratulations"
+</div>
+
+<div class="modal fade" id="congratulations" tabindex="-1" role="dialog" aria-labelledby="congratulations"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -89,7 +100,6 @@
       </div>
     </div>
   </div>
-</div>
 
   <script src=script.js></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
