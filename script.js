@@ -122,6 +122,7 @@ $(document).ready(function () {
             }
         });
     };
+    
 
     function hard() {
         $("#hard").click(function () {
@@ -145,7 +146,6 @@ $(document).ready(function () {
         let numberOfCards = $('.game-card').length;
         if (numberOfMatched === numberOfCards) {
             disableClicks();
-            $('#congratulations').modal('show');
         };
     };
 
