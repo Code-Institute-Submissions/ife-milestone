@@ -1,3 +1,7 @@
+body {
+    background: #70273C;
+}
+
 h1 {
     text-align: center;
     padding-top: 10px;
@@ -7,7 +11,7 @@ h1 {
     margin: none;
     padding-left: 20px;
     background: #70273C;
-    height: 100%;
+    height: 150%;
     position: absolute;
     width: 100%;
     color: #E7A75C;
@@ -21,6 +25,20 @@ h1 {
     margin-right: auto;
 }
 
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+
+ }
+
+ .transparent {
+     opacity: 0;
+ }
+
+ .opaque {
+     opacity: 1;
+ }
+
 #start {
     display: block;
     margin-left: auto;
@@ -30,7 +48,22 @@ h1 {
     color: #194D29;
     border-radius: 15%; 
     border: 4px solid #194D29;
-    ;
+
+}
+
+#reset {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+    background-color: rgb(255, 115, 91);
+    color: rgb(77, 25, 25);
+    border-radius: 15%; 
+    border: 4px solid rgb(77, 25, 25);
+}
+
+.hidden {
+    display: none !important;
 }
 
 .game-card {

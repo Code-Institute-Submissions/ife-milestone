@@ -9,28 +9,59 @@ $(document).ready(function () {
     const unmatchSound = document.getElementById('wrong');
     const matchSound = document.getElementById('correct');
 
-    easy();
-    medium();
-    hard();
-    startGame();
-    moveCounter();
+    function disableClicks() {
+        $(".game-card").addClass("no-click");
+    };
     disableClicks();
+
+    function ready() {
+        $('#start').toggleClass('hidden');
+        $('#reset').toggleClass('hidden');
+        movesTaken = 0;
+        $('.move-counter').text('Moves: ' + 0);
+        seconds = 0;
+        minutes = 0;
+        $('div').removeClass('flipped matched no-click');
+        shuffleDeck();
+        chooseCards();
+        checkMatch();
+        clearInterval(timeTaken);
+        $('.timer').text('Timer: 00:00');
+        timer();
+    }
+
+    function reset() {
+        disableClicks();
+        $('#start').toggleClass('hidden');
+        $('#reset').toggleClass('hidden');
+        movesTaken = 0;
+        $('.move-counter').text('Moves: ' + 0);
+        seconds = 0;
+        minutes = 0;
+        $('div').removeClass('flipped matched');
+        clearInterval(timeTaken);
+        $('.timer').text('Timer: 00:00');
+        $('#reset-message').removeClass('transparent').addClass('opaque animated lightSpeedIn');
+        setTimeout(function () {
+            $('#reset-message').removeClass('lightSpeedIn').addClass('lightSpeedOut')
+        }, 3000);
+        setTimeout(function () {
+            $('#reset-message').removeClass('lightSpeedOut opaque').addClass('transparent')
+        }, 4000);
+        
+    }
 
     function startGame() {
         $('#start').click(function () {
-            movesTaken = 0;
-            $('.move-counter').text(0);
-            seconds = 0;
-            minutes = 0;
-            $('div').removeClass('flipped matched no-click');
-            shuffleDeck();
-            chooseCards();
-            checkMatch();
-            clearInterval(timeTaken);
-            $('.timer').text('Timer: 00:00');
-            timer();
+            ready();
         });
     };
+
+    function resetGame() {
+        $('#reset').click(function () {
+            reset();
+        })
+    }
 
     function shuffleDeck() {
         var parent = $("#game");
@@ -83,16 +114,15 @@ $(document).ready(function () {
     function cardUnmatch() {
         disableClicks();
         unmatchSound.play();
+        $('.flipped').each(function () {
+            $(this).addClass('animated shake');
+        });
         setTimeout(function () {
             $('.flipped').each(function () {
-                $(this).removeClass('flipped')
+                $(this).removeClass('animate shake flipped');
             })
             enableClicks();
         }, 1100);
-    }
-
-    function disableClicks() {
-        $(".game-card").addClass("no-click");
     }
 
     function enableClicks() {
@@ -155,6 +185,7 @@ $(document).ready(function () {
         let numberOfCards = $('.game-card').length;
         if (numberOfMatched === numberOfCards) {
             disableClicks();
+            matchSound.play();
             $('#congratulations').modal('show');
             var finalMinutes = minutes;
             var finalSeconds = seconds;
@@ -201,5 +232,12 @@ $(document).ready(function () {
             }
         }, 1000);
     };
+
+    easy();
+    medium();
+    hard();
+    startGame();
+    resetGame();
+    moveCounter();
 
 });
