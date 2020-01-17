@@ -4,8 +4,8 @@ $(document).ready(function () {
     let stopwatch = document.getElementsByClassName('timer');
 
     let movesTaken;
-    let seconds = 0;
-    let minutes = 0;
+    let seconds;
+    let minutes;
     const unmatchSound = document.getElementById('wrong');
     const matchSound = document.getElementById('correct');
 
@@ -14,34 +14,30 @@ $(document).ready(function () {
     };
     disableClicks();
 
-    function ready() {
+    function setToZero() {
         $('#start').toggleClass('hidden');
         $('#reset').toggleClass('hidden');
         movesTaken = 0;
-        $('.move-counter').text('Moves: ' + 0);
+        $('.move-counter').text('Moves: 0');
         seconds = 0;
         minutes = 0;
         $('div').removeClass('flipped matched');
+        clearInterval(timeTaken);
+        $('.timer').text('Timer: 00:00');
+    }
+
+    function ready() {
+        setToZero();
         shuffleDeck();
         chooseCards();
         checkMatch();
-        clearInterval(timeTaken);
-        $('.timer').text('Timer: 00:00');
         timer();
         enableClicks();
     }
 
     function reset() {
         disableClicks();
-        $('#start').toggleClass('hidden');
-        $('#reset').toggleClass('hidden');
-        movesTaken = 0;
-        $('.move-counter').text('Moves: ' + 0);
-        seconds = 0;
-        minutes = 0;
-        $('div').removeClass('flipped matched');
-        clearInterval(timeTaken);
-        $('.timer').text('Timer: 00:00');
+        setToZero();
         $(".pokemon").addClass("hidden");
         $(".pokeball").removeClass("hidden");
         $('#reset-message').removeClass('transparent').addClass('opaque animated lightSpeedIn');
@@ -129,26 +125,29 @@ $(document).ready(function () {
         $(".game-card").removeClass("no-click");
     };
 
-    function easy() {
-        $("#easy").click(function () {
-            disableClicks();
-            $('#game').removeClass('hard');
-            $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
+    function difficultyReset() {
+        disableClicks();
+        $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
             clearInterval(timeTaken);
             clearTimeout(timeTaken);
             $('.timer').text('Timer: 00:00');
-            $('.move-counter').text('Moves:' + 0);
-            $(".pokemon").addClass("hidden");
-            $(".pokeball").removeClass("hidden");
+            $('.move-counter').text('Moves: 0');
+            $('#start').removeClass('hidden');
+            $('#reset').addClass('hidden');
+            }
+
+    function easy() {
+        $(".easy").click(function () {
+            difficultyReset();
+            $('#game').removeClass('hard');
         });
     };
 
 
     function medium() {
-        $("#medium").click(function () {
-            disableClicks();
+        $(".medium").click(function () {
+            difficultyReset();
             $('#game').removeClass('hard');
-            $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
             let $newdiv;
             for (let i = 0; i < 4; i++) {
                 let j = i + 9;
@@ -156,19 +155,14 @@ $(document).ready(function () {
                 $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball"> <img src="assets/images/' + k + '.png" class="pokemon"></img></div>');
                 $('#game').append($newdiv);
             }
-            clearInterval(timeTaken);
-            clearTimeout(timeTaken);
-            $('.timer').text('Timer: 00:00');
-            $('.move-counter').text('Moves:' + 0);
             $(".pokemon").addClass("hidden");
             $(".pokeball").removeClass("hidden");
         });
     };
 
     function hard() {
-        $("#hard").click(function () {
-            disableClicks();
-            $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
+        $(".hard").click(function () {
+            difficultyReset();
             let $newdiv;
             for (let i = 0; i < 10; i++) {
                 let j = i + 9;
@@ -177,10 +171,6 @@ $(document).ready(function () {
                 $('#game').append($newdiv);
             }
             $('#game').addClass('hard');
-            clearInterval(timeTaken);
-            clearTimeout(timeTaken);
-            $('.timer').text('Timer: 00:00');
-            $('.move-counter').text('Moves:' + 0);
             $(".pokemon").addClass("hidden");
             $(".pokeball").removeClass("hidden");
         });
@@ -215,7 +205,6 @@ $(document).ready(function () {
 
     function timer() {
         timeTaken = setInterval(function () {
-
             $('.timer').text(minutes + ':' + seconds);
             seconds++;
             if (minutes < 10) {
@@ -231,7 +220,6 @@ $(document).ready(function () {
                     $('.timer').text('Timer:' + minutes + ':' + seconds)
                 }
             }
-
             if (seconds == 59) {
                 minutes++;
                 seconds = 0;

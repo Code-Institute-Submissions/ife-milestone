@@ -12,6 +12,8 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Indie+Flower|Luckiest+Guy|Press+Start+2P&display=swap"
+    rel="stylesheet">
 
 </head>
 
@@ -26,68 +28,76 @@
     <source src="assets/sounds/cardSlide7.wav">
   </audio>-->
   <div class="game-container">
-    <h1>Match 2 Memory Game</h1>
-    <h3>How to play:</h3>
+    <h1 class="pixel-font">Match 2 Memory Game</h1>
+    <h3 class="pixel-font">How to play:</h3>
     <p>Click on the cards to flip them over. Only two cards can be flipped per go. Try to memorise the picture beneath
       the
       flipped cards.
       Continue until you find matching cards. Game complete when you find all of the matches.
     </p>
 
-    <button id="start" class="shadow-none">START</button>
-    <button id="reset" class="hidden shadow-none">RESET</button>
+    <button id="start">START</button>
+    <button id="reset" class="hidden">RESET</button>
 
     <div class="row">
       <p id="reset-message" class="transparent">Cards successfully reshuffled. Click START to begin.</p>
     </div>
 
+    <div class="row d-xl-none under-xl">
+      <div class="timer">Timer: 00:00</div>
+      <div class="move-counter">Moves: 0</div>
+      <button class="easy difficulty-button">Easy</button>
+      <button class="medium difficulty-button">Medium</button>
+      <button class="hard difficulty-button">Hard</button>
+    </div>
+
     <div class="row">
-      <div class="col-2">
+      <div class="d-none d-xl-block col-2">
         <div class="timer">Timer</div>
         <div class="move-counter">Moves</div>
       </div>
 
-      <div class="col-8">
+      <div class="col-sm-12 col-xl-8">
         <div id="game" class="flex-container">
           <div class="game-card" data-card-number="1" id="card1">
             <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/1.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="1" id="card2">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/1.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="2" id="card3">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/2.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="2" id="card4">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/2.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="3" id="card5">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/3.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="3" id="card6">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/3.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="4" id="card7">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/4.png" class="hidden pokemon"></img>
           </div>
           <div class="game-card" data-card-number="4" id="card8">
-              <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
+            <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball">
             <img src="assets/images/4.png" class="hidden pokemon"></img>
           </div>
         </div>
       </div>
 
-      <div class="col-2">
-        <button id="easy">Easy</button>
-        <button id="medium">Medium</button>
-        <button id="hard">Hard</button>
+      <div class="d-none d-xl-block col-2">
+        <button class="easy difficulty-button">Easy</button>
+        <button class="medium difficulty-button">Medium</button>
+        <button class="hard difficulty-button">Hard</button>
       </div>
     </div>
   </div>
@@ -109,7 +119,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
