@@ -14,6 +14,7 @@
     crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Indie+Flower|Luckiest+Guy|Press+Start+2P&display=swap"
     rel="stylesheet">
+    <script src="https://kit.fontawesome.com/12bb6f902f.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -29,32 +30,32 @@
   </audio>-->
   <div class="game-container">
     <h1 class="pixel-font">Match 2 Memory Game</h1>
-    <h3 class="pixel-font">How to play:</h3>
+    <h5 class="pixel-font">How to play:</h5>
     <p>Click on the cards to flip them over. Only two cards can be flipped per go. Try to memorise the picture beneath
       the
       flipped cards.
       Continue until you find matching cards. Game complete when you find all of the matches.
     </p>
 
-    <button id="start">START</button>
-    <button id="reset" class="hidden">RESET</button>
+    <a href="#game"><button id="start" class="pixel-font">START</button></a>
+    <button id="reset" class="hidden pixel-font">RESET</button>
 
     <div class="row">
       <p id="reset-message" class="transparent">Cards successfully reshuffled. Click START to begin.</p>
     </div>
 
     <div class="row d-xl-none under-xl">
-      <div class="timer">Timer: 00:00</div>
-      <div class="move-counter">Moves: 0</div>
-      <button class="easy difficulty-button">Easy</button>
-      <button class="medium difficulty-button">Medium</button>
-      <button class="hard difficulty-button">Hard</button>
+      <div class="timer pixel-font col-6">Timer: 00:00</div>
+      <div class="move-counter pixel-font col-6">Moves: 0</div>
+      <button class="easy-level difficulty-button pixel-font">Easy</button>
+      <button class="medium-level difficulty-button pixel-font">Medium</button>
+      <button class="hard-level difficulty-button pixel-font">Hard</button>
     </div>
 
     <div class="row">
-      <div class="d-none d-xl-block col-2">
-        <div class="timer">Timer</div>
-        <div class="move-counter">Moves</div>
+      <div class="d-none d-xl-block col-2 xl">
+        <div class="timer pixel-font">Timer: 00:00</div>
+        <div class="move-counter pixel-font">Moves: 0</div>
       </div>
 
       <div class="col-sm-12 col-xl-8">
@@ -94,10 +95,10 @@
         </div>
       </div>
 
-      <div class="d-none d-xl-block col-2">
-        <button class="easy difficulty-button">Easy</button>
-        <button class="medium difficulty-button">Medium</button>
-        <button class="hard difficulty-button">Hard</button>
+      <div class="d-none d-xl-block col-2 xl">
+        <button class="easy-level difficulty-button pixel-font">Easy</button>
+        <button class="medium-level difficulty-button pixel-font">Medium</button>
+        <button class="hard-level difficulty-button pixel-font">Hard</button>
       </div>
     </div>
   </div>
@@ -105,20 +106,25 @@
   <div class="modal fade" id="congratulations" tabindex="-1" role="dialog" aria-labelledby="congratulations"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content modal-background">
         <div class="modal-header">
-          <h5 class="modal-title">Congratulations!</h5>
+          <h5 class="modal-title pixel-font">Congratulations!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <h6>You've completed the game.</h6>
-          <p>It only took you <p class='total-minutes'></p> minutes, <p class='total-seconds'></p> seconds and <p
-              class='total-moves'></p> moves!</p>
+          <h4>You've completed the game.</h4>
+          <p>It only took you : &nbsp;</p>
+          <p class='total-minutes'></p>
+          <p>minutes, </p>
+          <p class='total-seconds'></p>
+          <p>seconds and </p>
+          <p class='total-moves'></p>
+          <p> moves!</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="play-again pixel-font" data-dismiss="modal">Play Again!</button>
         </div>
       </div>
     </div>

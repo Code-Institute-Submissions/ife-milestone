@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .btn:focus {
     outline: none !important;
 }
@@ -6,20 +10,33 @@
     font-family: "Press Start 2P", sans-serif;
 }
 
+.row { 
+    background-color: rgb(65, 65, 65);
+}
+
 h1 {
     text-align: center;
     padding-top: 10px;
+    color: rgb(255, 51, 0);
+}
+
+h5 {
+    padding-top: 30px;
+    color: rgb(255, 51, 0);
+}
+
+h4 {
+    font-family: "Indie Flower", sans-serif;
+    color: cornsilk;
 }
 
 .game-container {
     margin: none;
     padding-left: 20px;
-    background: rgb(255, 238, 0);
-    height: 150%;
+    background: rgb(65, 65, 65);
     position: absolute;
     width: 100%;
     color: rgb(0, 0, 0);
-    
 }
 
 .flex-container {
@@ -31,6 +48,11 @@ h1 {
 
 .under-xl {
     flex: 1 0 20%;
+}
+
+.xl {
+    display: flex;
+    align-content: space-between;
 }
 
 .btn:active {
@@ -51,6 +73,7 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
     font-size: 40px;
     background-color: #57FF8A;
     color: #194D29;
@@ -67,6 +90,7 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
     font-size: 40px;
     background-color: rgb(255, 115, 91);
     color: rgb(77, 25, 25);
@@ -79,10 +103,22 @@ h1 {
     background-color: rgb(184, 84, 66);
 }
 
+.timer, .move-counter {
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    color: rgb(91, 129, 255);
+}
+
+a {
+    text-decoration: none !important;
+}
+
 .difficulty-button {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     border-radius: 15%;
     background-color: rgb(91, 129, 255);
     border: 3px solid rgb(25, 49, 77);
@@ -91,41 +127,52 @@ h1 {
 
 }
 
+.difficulty-button:hover, .difficulty-button:active {
+    background-color: rgb(73, 104, 206);
+}
+
 .hidden {
     display: none !important;
 }
 
+#game {
+    justify-content: space-evenly;
+}
+
 .game-card {
-    height: 180px;
+    max-width: 250px;
+    max-height: 195px;
     margin: 10px;
     border-radius: 20px;
     border-color: black;
     border-style: solid;
     border-width: 4px;
     box-shadow: 0 10px 6px -6px black;
-    background: rgb(65, 65, 65);
+    background: rgb(255, 238, 0);
     flex: 1 0 20%;
+}
+
+.game-card:hover {
+    box-shadow: 0 0 10px;
 }
 
 .game-card>img {
     margin-top: 2.5%;
     margin-left: auto;
     margin-right: auto;
-    width: 95%;
-    height: 95%;
-
+    width: 95% !important;
+    height: 95% !important;
+    position: relative;
 }
 
 .no-click {
     pointer-events: none;
 }
 
-.flipped {
-    background: #E7A75C;
-}
-
 .flipped>img {
     display: block;
+    width: 95%;
+    height: 95%;
 }
 
 
@@ -139,10 +186,72 @@ h1 {
     transition: opacity .2s ease-out;
 }
 
-.hard>.game-card {
-    flex: 1 0 14%;
-}
-
 p {
     display: inline-block;
+    font-family: "Indie Flower", sans-serif;
+    font-size: 20px;
+    color: cornsilk;
+}
+
+.modal-background {
+    background-color: rgb(65, 65, 65) !important;
+    border: 10px solid rgb(26, 25, 25) !important;
+
+}
+
+.modal-title {
+    color: rgb(255, 238, 0);
+}
+
+.modal-footer, .modal-header {
+    border: none !important;
+}
+
+.play-again {
+    background-color: #57FF8A;
+    color: #194D29;
+    border-radius: 15%; 
+    border: 4px solid #194D29;
+}
+
+.play-again:hover, .play-again:active {
+    background-color: rgb(58, 168, 91);
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .game-card {
+        flex: 1 0 30%;
+    }
+
+    .medium>.game-card, .hard>.game-card {
+        flex: 1 0 25%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 769px) {
+    .hard>.game-card {
+        flex: 1 0 30%;
+        max-height: 150px;
+        max-width: 200px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .hard>.game-card {
+        flex: 1 0 14%;
+    }
+
+    .difficulty-button {
+        width: 150px;
+        height: 80px;
+        font-size: large;
+        margin-top: 45px;
+    }
+
+    .timer, .move-counter {
+        font-size: medium;
+        margin-top: 120px;
+    }    
 }
