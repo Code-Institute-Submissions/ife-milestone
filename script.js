@@ -42,6 +42,7 @@ $(document).ready(function () {
         checkMatch();
         timer();
         enableClicks();
+        $(".game-card").addClass("big-shadow")
         cards = Array.from(document.getElementsByClassName('game-card'));
         for (var i = 0; i<cards.length; i++) {
             cards[i].addEventListener('click', moveCounter);
@@ -53,6 +54,7 @@ $(document).ready(function () {
         setToZero();
         $(".pokemon").addClass("hidden");
         $(".pokeball").removeClass("hidden");
+        $(".game-card").removeClass("big-shadow")
         $('#reset-message').removeClass('transparent').addClass('opaque animated lightSpeedIn');
         setTimeout(function () {
             $('#reset-message').removeClass('lightSpeedIn').addClass('lightSpeedOut')

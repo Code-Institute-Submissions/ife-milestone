@@ -152,8 +152,8 @@ a {
     flex: 1 0 20%;
 }
 
-.game-card:hover {
-    box-shadow: 0 0 10px;
+.big-shadow:hover {
+    box-shadow: 0 0 20px;
 }
 
 .game-card>img {
