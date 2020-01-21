@@ -43,9 +43,10 @@ footer {
 .icon:hover {
     color: rgb(255, 51, 0);
 }
+
 /*------------------------------------- Styles for design of game */
 
-.row { 
+.row {
     background-color: rgb(65, 65, 65);
 }
 
@@ -65,7 +66,8 @@ footer {
     margin-right: auto;
 }
 
-.timer, .move-counter {
+.timer,
+.move-counter {
     font-size: 20px;
     text-align: center;
     display: flex;
@@ -119,8 +121,9 @@ footer {
 }
 
 .right-align {
-    text-align: right;   
+    text-align: right;
 }
+
 /*------------------------------------- Buttons */
 
 .btn:focus {
@@ -131,9 +134,9 @@ footer {
     outline: none !important;
     box-shadow: none !important;
 
- }
+}
 
- #start {
+#start {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -141,12 +144,13 @@ footer {
     font-size: 40px;
     background-color: #57FF8A;
     color: #194D29;
-    border-radius: 15%; 
+    border-radius: 15%;
     border: 4px solid #194D29;
     outline: none;
 }
 
-#start:hover, #start:active {
+#start:hover,
+#start:active {
     background-color: rgb(58, 168, 91);
 }
 
@@ -158,12 +162,13 @@ footer {
     font-size: 40px;
     background-color: rgb(255, 115, 91);
     color: rgb(77, 25, 25);
-    border-radius: 15%; 
+    border-radius: 15%;
     border: 4px solid rgb(77, 25, 25);
     outline: none;
 }
 
-#reset:hover, #reset:active {
+#reset:hover,
+#reset:active {
     background-color: rgb(184, 84, 66);
 }
 
@@ -180,30 +185,32 @@ footer {
 
 }
 
-.difficulty-button:hover, .difficulty-button:active {
+.difficulty-button:hover,
+.difficulty-button:active {
     background-color: rgb(73, 104, 206);
 }
 
 .play-again {
     background-color: #57FF8A;
     color: #194D29;
-    border-radius: 15%; 
+    border-radius: 15%;
     border: 4px solid #194D29;
 }
 
-.play-again:hover, .play-again:active {
+.play-again:hover,
+.play-again:active {
     background-color: rgb(58, 168, 91);
 }
 
 /*------------------------------------- Styles used in game */
 
- .transparent {
-     opacity: 0;
- }
+.transparent {
+    opacity: 0;
+}
 
- .opaque {
-     opacity: 1;
- }
+.opaque {
+    opacity: 1;
+}
 
 .hidden {
     display: none !important;
@@ -219,7 +226,7 @@ footer {
 
 .matched {
     display: block;
-    opacity: 0%;
+    opacity: 0;
     pointer-events: none;
 
     -webkit-transition: opacity .2s ease-out;
@@ -239,7 +246,8 @@ footer {
     color: rgb(255, 238, 0);
 }
 
-.modal-footer, .modal-header {
+.modal-footer,
+.modal-header {
     border: none !important;
 }
 
@@ -250,7 +258,8 @@ footer {
         flex: 1 0 30%;
     }
 
-    .medium>.game-card, .hard>.game-card {
+    .medium>.game-card,
+    .hard>.game-card {
         flex: 1 0 25%;
     }
 }
@@ -275,8 +284,9 @@ footer {
         margin-top: 45px;
     }
 
-    .timer, .move-counter {
+    .timer,
+    .move-counter {
         font-size: medium;
         margin-top: 120px;
-    }    
+    }
 }

@@ -5,7 +5,12 @@
 ## Aim
 
 This website has been created for my second milestone project with Code Institute, my Interactive Front End Development project. The aim of the project is to build a memory game in which a deck of cards is shuffled, where only two cards will have the same image, placed face down and then flipped over two at a time to find the matching cards. The game ends when all of the matching cards have been found. 
-The game, varibale and functions, is written with JavaScript and jQuery and the website is built and styled using HTML and CSS.
+
+The website was designed with a young user in mind, hence the bright colours, loud noises and use of well known cartoon characters throughout. However, since the characters are known to adults as well, perhaps in a more nostalgic sense, the colours are paler as opposed to saturated.
+
+The game on the website is very simple, therefore the user will use the website for a short amount of time for a bit of fun and distraction.
+
+The game, variables and functions, is written with JavaScript and jQuery and the website is built and styled using HTML and CSS.
 
 ## Initial Stages
 1. Wireframes
@@ -108,6 +113,8 @@ For example, the first function I added was the `shuffleDeck()` function (Credit
 
  After writing the `timer()` function, I researched whether there was a more elegant way of writing this code and found that using `setInterval()` is not the most accurate way of counting in seconds. However, I felt that the code I'd written was easy to follow and understand, so I didn't change it at the expense of inaccuracy. 
 
+ Defensive desing is implemented throughout vis the `disableClicks()` and `enableClicks()` functions. The `disableClicks()` function is used estensively to stop a user trying to view all flipped cards at once. It is used to stop the user clicking more than 2 cards at a time and `enableClicks()` then allows the user only to select 2 more cards after the previous two have flipped back over (if they don't match) or disappear (if they do match). Whenever the user clicks the reset, easy, medium, or hard buttons `disableClicks()` is again used and the user can only click the cards to flip them after the start button has been clicked.
+
  ## Testing
 
  The project was tested throughout using Chrome Developer Tools. I used Chrome Developer Tools to catch bugs in my code; most commonly stray punctuation, and for example using console.log() to check that the deck of cards was shuffled correctly.
@@ -125,6 +132,9 @@ For example, the first function I added was the `shuffleDeck()` function (Credit
   External links to social media accounts, and internal links (scroll to game after clicking start) have been tested also.
 
 HTML and CSS files both validated via (https://www.w3.org/) validator.
+
+JavaScript file validated via (https://jshint.com/) validator.
+
 ## Issues Encountered
 
 The first difficult problem I encountered was figuring out how to check if two cards were matching, especially when extra cards were going to be added for different difficulty levels. After some research I found a YouTube video (https://www.youtube.com/watch?v=Eq4bUSWGv1Y) which introduced me to `data-` attributes. This enabled me to check if two selected cards (with class `.flipped`) had the same `data-` attribute and were therefore matching. 
@@ -133,7 +143,7 @@ A second problem I encountered was that initially I called the `timer()` and `mo
 
 A regular problem I encountered was ensuring all of the game cards were visible at each difficulty level on different viewport widths. This problem was resolved with the use of Flexbox, Chrome Developer Tools and media queries. 
 
-An issue I have yet to fix is that some of the cards (divs) expand when they are flipped to reveal the image on the other side. If I was to have more time working on the project I would like to fix this. 
+An issue I have yet to fix is that some of the cards (divs) expand when they are flipped to reveal the image on the other side. If I was to have more time working on the project I would like to fix this. My first approach to fixing this issue would be to add `max-height` attributes to the cards for different viewport widths and for each different difficulty level. 
 
 ## Deployment
 

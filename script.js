@@ -9,14 +9,14 @@ $(document).ready(function () {
 
     function disableClicks() {
         $(".game-card").addClass("no-click");
-    };
+    }
     disableClicks();
 
     function moveCounter() {
-           movesTaken++;
-           $('.move-counter').text('Moves:' + movesTaken);
-       };
-    
+        movesTaken++;
+        $('.move-counter').text('Moves:' + movesTaken);
+    }
+
     function setToZero() {
         $('#start').toggleClass('hidden');
         $('#reset').toggleClass('hidden');
@@ -27,9 +27,9 @@ $(document).ready(function () {
         $('div').removeClass('flipped matched');
         clearInterval(timeTaken);
         $('.timer').text('Timer: 00:00');
-        for (var i = 0; i<cards.length; i++) {
+        for (var i = 0; i < cards.length; i++) {
             cards[i].removeEventListener('click', moveCounter);
-        };
+        }
     }
 
     function ready() {
@@ -39,11 +39,11 @@ $(document).ready(function () {
         checkMatch();
         timer();
         enableClicks();
-        $(".game-card").addClass("big-shadow")
+        $(".game-card").addClass("big-shadow");
         cards = Array.from(document.getElementsByClassName('game-card'));
-        for (var i = 0; i<cards.length; i++) {
+        for (var i = 0; i < cards.length; i++) {
             cards[i].addEventListener('click', moveCounter);
-        };
+        }
     }
 
     function reset() {
@@ -51,35 +51,35 @@ $(document).ready(function () {
         setToZero();
         $(".pokemon").addClass("hidden");
         $(".pokeball").removeClass("hidden");
-        $(".game-card").removeClass("big-shadow")
+        $(".game-card").removeClass("big-shadow");
         $('#reset-message').removeClass('transparent').addClass('opaque animated lightSpeedIn');
         setTimeout(function () {
-            $('#reset-message').removeClass('lightSpeedIn').addClass('lightSpeedOut')
+            $('#reset-message').removeClass('lightSpeedIn').addClass('lightSpeedOut');
         }, 3000);
         setTimeout(function () {
-            $('#reset-message').removeClass('lightSpeedOut opaque').addClass('transparent')
-        }, 4000);   
-    };
+            $('#reset-message').removeClass('lightSpeedOut opaque').addClass('transparent');
+        }, 4000);
+    }
 
     function startGame() {
         $('#start').click(function () {
             ready();
         });
-    };
+    }
 
     function resetGame() {
         $('#reset').click(function () {
             reset();
         });
-    };
+    }
 
     function shuffleDeck() {
         let parent = $("#game");
         let divs = parent.children();
         while (divs.length) {
             parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-        };
-    };
+        }
+    }
 
     function chooseCards() {
         $(".game-card").click(function () {
@@ -89,7 +89,7 @@ $(document).ready(function () {
             checkMatch();
 
         });
-    };
+    }
 
     function checkMatch() {
         if ($(".flipped").length === 2) {
@@ -97,12 +97,12 @@ $(document).ready(function () {
                 cardMatch();
             } else {
                 cardUnmatch();
-            };
+            }
             setTimeout(function () {
-                gameComplete()
+                gameComplete();
             }, 1300);
-        };
-    };
+        }
+    }
 
     function cardMatch() {
         disableClicks();
@@ -115,7 +115,7 @@ $(document).ready(function () {
             });
             enableClicks();
         }, 1100);
-    };
+    }
 
     function cardUnmatch() {
         disableClicks();
@@ -127,32 +127,32 @@ $(document).ready(function () {
             $('.flipped').each(function () {
                 $(this).removeClass('animated shake flipped');
                 $(this).children("img").toggleClass('hidden');
-            })
+            });
             enableClicks();
         }, 1100);
-    };
+    }
 
     function enableClicks() {
         $(".game-card").removeClass("no-click");
-    };
+    }
 
     function difficultyReset() {
         disableClicks();
         $("div").removeClass('flipped matched').remove("#card9, #card10, #card11, #card12, #card13, #card14, #card15, #card16, #card17, #card18");
-            clearInterval(timeTaken);
-            clearTimeout(timeTaken);
-            $('.timer').text('Timer: 00:00');
-            $('.move-counter').text('Moves: 0'); 
-            $('#start').removeClass('hidden');
-            $('#reset').addClass('hidden');
-            }
+        clearInterval(timeTaken);
+        clearTimeout(timeTaken);
+        $('.timer').text('Timer: 00:00');
+        $('.move-counter').text('Moves: 0');
+        $('#start').removeClass('hidden');
+        $('#reset').addClass('hidden');
+    }
 
     function easy() {
         $(".easy-level").click(function () {
             difficultyReset();
             $('#game').removeClass('hard medium');
         });
-    };
+    }
 
     function medium() {
         $(".medium-level").click(function () {
@@ -162,19 +162,19 @@ $(document).ready(function () {
             for (let i = 0; i < 4; i++) {
                 let j = i + 9;
                 let k = Math.ceil((j) / 2);
-                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id="card' + (j) + '"> <img src="assets/images/Pokeball_icon.png" alt="pokeball" class="pokeball"> <img src="assets/images/' + k + '.png" alt="pokemon' + k +'" class="pokemon"></div>');
+                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id="card' + (j) + '"> <img src="assets/images/Pokeball_icon.png" alt="pokeball" class="pokeball"> <img src="assets/images/' + k + '.png" alt="pokemon' + k + '" class="pokemon"></div>');
                 $('#game').append($newdiv);
             }
             $('#game').addClass('medium');
             $(".pokemon").addClass("hidden");
             $(".pokeball").removeClass("hidden");
         });
-    };
+    }
 
     function hard() {
         $(".hard-level").click(function () {
             difficultyReset();
-            $('#game').removeClass('medium')
+            $('#game').removeClass('medium');
             let $newdiv;
             for (let i = 0; i < 10; i++) {
                 let j = i + 9;
@@ -186,7 +186,7 @@ $(document).ready(function () {
             $(".pokemon").addClass("hidden");
             $(".pokeball").removeClass("hidden");
         });
-    };
+    }
 
     function gameComplete() {
         let numberOfMatched = $('.matched').length;
@@ -202,8 +202,8 @@ $(document).ready(function () {
             $('.total-seconds').text(finalSeconds);
             $('.total-moves').text(finalMoves);
             clearTimeout(timeTaken);
-        };
-    };
+        }
+    }
 
     let timeTaken;
 
@@ -213,15 +213,15 @@ $(document).ready(function () {
             seconds++;
             if (minutes < 10) {
                 if (seconds < 10) {
-                    $('.timer').text('Timer: 0' + minutes + ':0' + seconds)
+                    $('.timer').text('Timer: 0' + minutes + ':0' + seconds);
                 } else {
-                    $('.timer').text('Timer: 0' + minutes + ':' + seconds)
+                    $('.timer').text('Timer: 0' + minutes + ':' + seconds);
                 }
             } else {
                 if (seconds < 10) {
-                    $('.timer').text('Timer:' + minutes + ':0' + seconds)
+                    $('.timer').text('Timer:' + minutes + ':0' + seconds);
                 } else {
-                    $('.timer').text('Timer:' + minutes + ':' + seconds)
+                    $('.timer').text('Timer:' + minutes + ':' + seconds);
                 }
             }
             if (seconds == 59) {
@@ -229,7 +229,7 @@ $(document).ready(function () {
                 seconds = 0;
             }
         }, 1000);
-    };
+    }
 
     easy();
     medium();
