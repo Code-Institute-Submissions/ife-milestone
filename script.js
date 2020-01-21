@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
     let cards = Array.from(document.getElementsByClassName('game-card'));
-    let stopwatch = document.getElementsByClassName('timer');
-
     let movesTaken;
     let seconds;
     let minutes;
@@ -19,7 +17,6 @@ $(document).ready(function () {
            $('.move-counter').text('Moves:' + movesTaken);
        };
     
-
     function setToZero() {
         $('#start').toggleClass('hidden');
         $('#reset').toggleClass('hidden');
@@ -107,7 +104,6 @@ $(document).ready(function () {
         };
     };
 
-
     function cardMatch() {
         disableClicks();
         matchSound.play();
@@ -158,7 +154,6 @@ $(document).ready(function () {
         });
     };
 
-
     function medium() {
         $(".medium-level").click(function () {
             difficultyReset();
@@ -167,7 +162,7 @@ $(document).ready(function () {
             for (let i = 0; i < 4; i++) {
                 let j = i + 9;
                 let k = Math.ceil((j) / 2);
-                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id= card' + (j) + '> <img src="assets/images/Pokeball_icon.png" alt="" class="pokeball"> <img src="assets/images/' + k + '.png" class="pokemon"></img></div>');
+                $newdiv = $('<div class="game-card" data-card-number=' + k + ' id="card' + (j) + '"> <img src="assets/images/Pokeball_icon.png" alt="pokeball" class="pokeball"> <img src="assets/images/' + k + '.png" alt="pokemon' + k +'" class="pokemon"></div>');
                 $('#game').append($newdiv);
             }
             $('#game').addClass('medium');

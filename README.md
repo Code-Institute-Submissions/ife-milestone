@@ -122,6 +122,9 @@ For example, the first function I added was the `shuffleDeck()` function (Credit
 
   The timer was also tested by starting the game and leaving the webpage open for around 30 minutes, to ensure it would correctly show the time up for as long as a user was playing. 
 
+  External links to social media accounts, and internal links (scroll to game after clicking start) have been tested also.
+
+HTML and CSS files both validated via (https://www.w3.org/) validator.
 ## Issues Encountered
 
 The first difficult problem I encountered was figuring out how to check if two cards were matching, especially when extra cards were going to be added for different difficulty levels. After some research I found a YouTube video (https://www.youtube.com/watch?v=Eq4bUSWGv1Y) which introduced me to `data-` attributes. This enabled me to check if two selected cards (with class `.flipped`) had the same `data-` attribute and were therefore matching. 

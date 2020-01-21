@@ -29,6 +29,20 @@ p {
     font-size: 20px;
     color: cornsilk;
 }
+
+footer {
+    margin-top: 30px;
+}
+
+.icon {
+    padding-right: 10px;
+    font-size: 30px;
+    transition: color .8s;
+}
+
+.icon:hover {
+    color: rgb(255, 51, 0);
+}
 /*------------------------------------- Styles for design of game */
 
 .row { 
@@ -104,6 +118,9 @@ p {
     align-content: space-between;
 }
 
+.right-align {
+    text-align: right;   
+}
 /*------------------------------------- Buttons */
 
 .btn:focus {
